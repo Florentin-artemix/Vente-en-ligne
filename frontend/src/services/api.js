@@ -67,6 +67,12 @@ export const userService = {
     return response.data;
   },
 
+  // Récupérer tous les utilisateurs (Admin)
+  getAllUsers: async () => {
+    const response = await userApi.get('/users');
+    return response.data;
+  },
+
   // Récupérer un utilisateur par ID
   getUserById: async (id) => {
     const response = await userApi.get(`/users/${id}`);
@@ -79,9 +85,21 @@ export const userService = {
     return response.data;
   },
 
+  // Récupérer les utilisateurs par rôle (Admin)
+  getUsersByRole: async (role) => {
+    const response = await userApi.get(`/users/role/${role}`);
+    return response.data;
+  },
+
   // Mettre à jour un utilisateur
   updateUser: async (id, userData) => {
     const response = await userApi.put(`/users/${id}`, userData);
+    return response.data;
+  },
+
+  // Mettre à jour le rôle d'un utilisateur (Admin)
+  updateUserRole: async (id, role) => {
+    const response = await userApi.patch(`/users/${id}/role`, { role });
     return response.data;
   },
 
@@ -267,6 +285,12 @@ export const paiementService = {
   // Créer un nouveau paiement
   createPaiement: async (paiementData) => {
     const response = await api.post('/paiements', paiementData);
+    return response.data;
+  },
+
+  // Récupérer tous les paiements (Admin)
+  getAllPaiements: async () => {
+    const response = await api.get('/paiements');
     return response.data;
   },
 
