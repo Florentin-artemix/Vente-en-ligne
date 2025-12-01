@@ -29,6 +29,7 @@ public class OrderItem {
     @Column(nullable = false)
     private String produitTitre;
 
+    @Column(columnDefinition = "TEXT")
     private String produitImage;
 
     @Column(nullable = false, precision = 10, scale = 2)
