@@ -16,7 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Component
-@Order(1)
+@Order(10)  // S'exécute APRÈS le CorsFilter (qui a Ordered.HIGHEST_PRECEDENCE)
 public class AuthenticationFilter implements Filter {
 
     private static final Logger logger = LoggerFactory.getLogger(AuthenticationFilter.class);
