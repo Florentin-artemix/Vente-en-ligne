@@ -1,9 +1,15 @@
-# Firebase credentials (ne pas commiter)
+# Firebase credentials (ne pas committer)
 Microservice/UsersService/vente-en-ligne-13622-firebase-adminsdk-fbsvc-076080c9a0.json
 Microservice/UsersService/src/main/resources/firebase-service-account.json
 Microservice/APIGateway/src/main/resources/firebase-credentials.json
 frontend/.env
 *.json.bak
+
+# Environment files with secrets (ne pas committer)
+.env
+.env.local
+.env.*.local
+!.env.example
 
 # IDE
 .idea/
