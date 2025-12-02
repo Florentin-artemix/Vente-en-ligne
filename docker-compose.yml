@@ -134,6 +134,7 @@ services:
       SPRING_CLOUD_CONFIG_URI: http://config-server:8888
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka/
       SPRING_DATA_MONGODB_URI: mongodb://mongodb:27017/produits_db
+      GITHUB_TOKEN: "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"
     networks:
       - microservices-network
     depends_on:

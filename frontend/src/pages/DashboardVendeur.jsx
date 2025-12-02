@@ -101,18 +101,6 @@ const DashboardVendeur = () => {
   const handleAddProduit = async (e) => {
     e.preventDefault();
     try {
-      let imageUrl = newProduit.imageUrl;
-      
-      // If an image file is selected, upload it first
-      if (newProduit.imageFile) {
-        // For now, we'll use a placeholder. In production, upload to cloud storage
-        const reader = new FileReader();
-        imageUrl = await new Promise((resolve) => {
-          reader.onloadend = () => resolve(reader.result);
-          reader.readAsDataURL(newProduit.imageFile);
-        });
-      }
-      
       const produitData = {
         titre: newProduit.titre,
         description: newProduit.description,
@@ -122,7 +110,7 @@ const DashboardVendeur = () => {
         sousCategorie: newProduit.sousCategorie,
         marque: newProduit.marque,
         stock: parseInt(newProduit.stock),
-        imageUrl: imageUrl,
+        imageUrl: newProduit.imageUrl,
         vendeurId: userProfile.id,
         status: 'DISPONIBLE',
         specifications: newProduit.specifications
@@ -364,20 +352,14 @@ const DashboardVendeur = () => {
                 </div>
               </div>
               <div className="form-group">
-                <label>Image du produit *</label>
+                <label>Image URL *</label>
                 <input
-                  type="file"
-                  accept="image/*"
-                  onChange={e => {
-                    const file = e.target.files[0];
-                    if (file) {
-                      setNewProduit({...newProduit, imageFile: file});
-                    }
-                  }}
+                  type="text"
+                  value={newProduit.imageUrl}
+                  onChange={e => setNewProduit({...newProduit, imageUrl: e.target.value})}
+                  placeholder="https://example.com/image.jpg"
+                  required
                 />
-                {newProduit.imageFile && (
-                  <p className="file-info">📷 {newProduit.imageFile.name}</p>
-                )}
               </div>
               
               {/* Spécifications */}
@@ -506,6 +488,15 @@ const DashboardVendeur = () => {
                     required
                   />
                 </div>
+              </div>
+              <div className="form-group">
+                <label>Image URL</label>
+                <input
+                  type="text"
+                  value={selectedProduit.imageUrl || selectedProduit.image || ''}
+                  onChange={e => setSelectedProduit({...selectedProduit, imageUrl: e.target.value, image: e.target.value})}
+                  placeholder="https://example.com/image.jpg"
+                />
               </div>
               <div className="form-group">
                 <label>Statut</label>
