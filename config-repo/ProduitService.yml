@@ -20,7 +20,7 @@ eureka:
 
 # GitHub configuration for image storage (used by ProduitService)
 github:
-  token: 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
+  token: ${GITHUB_TOKEN}
   owner: Florentin-artemix
   repo: vente-en-ligne-images
   branch: main

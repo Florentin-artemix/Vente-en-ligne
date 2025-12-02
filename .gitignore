@@ -17,3 +17,5 @@ dist/
 # Logs
 *.log
 startup-logs.txt
+
+secrets.ps1
