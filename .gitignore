@@ -5,6 +5,10 @@ Microservice/APIGateway/src/main/resources/firebase-credentials.json
 frontend/.env
 *.json.bak
 
+# Environment variables (ne pas commiter - contient des secrets)
+.env
+!.env.example
+
 # IDE
 .idea/
 *.iml

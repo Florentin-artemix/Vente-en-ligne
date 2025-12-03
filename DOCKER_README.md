@@ -251,6 +251,31 @@ Les variables d'environnement sont définies dans `docker-compose.yml`:
 - URLs d'Eureka et Config Server
 - Credentials des bases de données
 
+### Configuration du Token GitHub
+
+Le service ProduitService nécessite un token GitHub pour stocker les images. Ce token ne doit **jamais** être commité dans le dépôt.
+
+1. Copiez le fichier `.env.example` en `.env`:
+```bash
+cp .env.example .env
+```
+
+2. Modifiez le fichier `.env` avec votre token GitHub:
+```bash
+GITHUB_TOKEN=votre_token_github
+```
+
+3. Créez un Personal Access Token sur GitHub:
+   - Allez sur https://github.com/settings/tokens
+   - Cliquez sur "Generate new token (classic)"
+   - Donnez un nom au token
+   - Sélectionnez les permissions `repo` (pour les dépôts privés) ou `public_repo` (pour les dépôts publics)
+   - Copiez le token généré
+
+4. Docker Compose chargera automatiquement le fichier `.env` au démarrage.
+
+⚠️ **Important**: Le fichier `.env` est ignoré par git (voir `.gitignore`). Ne partagez jamais votre token GitHub.
+
 Pour modifier ces valeurs, éditez le fichier `docker-compose.yml`.
 
 ## Configuration Pour la Production
